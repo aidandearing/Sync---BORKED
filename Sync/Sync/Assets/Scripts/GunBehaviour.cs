@@ -36,12 +36,12 @@ public class GunBehaviour : MonoBehaviour
 
         if (fireRate != reloadRate)
         {
-            Synchronism.Instance.synchronisers[fireRate].RegisterCallback(this, Delegate_OnTime_Fire);
-            Synchronism.Instance.synchronisers[reloadRate].RegisterCallback(this, Delegate_OnTime_Reload);
+            ((Synchronism)Blackboard.Global["Synchroniser"].Value).synchronisers[fireRate].RegisterCallback(this, Delegate_OnTime_Fire);
+            ((Synchronism)Blackboard.Global["Synchroniser"].Value).synchronisers[reloadRate].RegisterCallback(this, Delegate_OnTime_Reload);
         }
         else
         {
-            Synchronism.Instance.synchronisers[fireRate].RegisterCallback(this, Delegate_OnTime_Both);
+            ((Synchronism)Blackboard.Global["Synchroniser"].Value).synchronisers[fireRate].RegisterCallback(this, Delegate_OnTime_Both);
         }
     }
 

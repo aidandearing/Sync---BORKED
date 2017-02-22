@@ -29,9 +29,9 @@ public class CubeBehaviour : MonoBehaviour
 
         if (!isDone)
         {
-            if (Synchronism.isStarting)
+            if (OrbSynchronism.isStarting)
             {
-                transform.position = Vector3.Lerp(transform.position, new Vector3(startPos.x, startPos.y + (100 * Synchronism.startPercent) * (Time.time % 1.0f), startPos.z), 0.01f);
+                transform.position = Vector3.Lerp(transform.position, new Vector3(startPos.x, startPos.y + (100 * OrbSynchronism.startPercent) * (Time.time % 1.0f), startPos.z), 0.01f);
             }
             else
             {

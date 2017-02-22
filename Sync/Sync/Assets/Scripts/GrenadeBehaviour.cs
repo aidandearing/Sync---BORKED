@@ -25,7 +25,7 @@ public class GrenadeBehaviour : MonoBehaviour
         GetComponent<Rigidbody>().velocity = transform.forward * velocity;
         lastPosition = transform.position;
 
-        Synchronism.Instance.synchronisers[detonationTimer].RegisterCallback(this, new Synchroniser.OnTime(Delegate_OnTime));
+        ((Synchronism)Blackboard.Global["Synchroniser"].Value).synchronisers[detonationTimer].RegisterCallback(this, new Synchroniser.OnTime(Delegate_OnTime));
     }
 
     // Update is called once per frame
@@ -42,7 +42,7 @@ public class GrenadeBehaviour : MonoBehaviour
 
         spawn.SendMessage("SetParent", parent);
 
-        Synchronism.Instance.synchronisers[detonationTimer].UnregisterCallback(this);
+        ((Synchronism)Blackboard.Global["Synchroniser"].Value).synchronisers[detonationTimer].UnregisterCallback(this);
 
         Destroy(gameObject);
     }

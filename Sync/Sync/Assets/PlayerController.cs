@@ -46,9 +46,9 @@ public class PlayerController : Controller
     public float speedBackward;
     [Tooltip("Establishes at what timing this character is allowed to perform their movement action, whether it be jumping, teleporting, or whatever it may be")]
     public Synchronism.Synchronisations movementSync = Synchronism.Synchronisations.HALF_NOTE;
-    [Range(-1, 2)]
+    [Range(-1, 100)]
     [Tooltip("The number of times this character is able to perform their movement action, -1 for infinite actions")]
-    public int movementCount = 1;
+    public float movementCount = 1;
     [Range(0,25)]
     [Tooltip("The distances this character will travel when they perform their movement action")]
     public float distance = 3;
@@ -67,7 +67,7 @@ public class PlayerController : Controller
 
     }
 
-    // Update is called once per frame
+    // Fixed Update is called once per frame
     override protected void FixedUpdate()
     {
 
