@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class TitleSynchronism : Synchronism
 {
-
+    public MusicPlayer musicPlayer;
 
     protected override void Start()
     {

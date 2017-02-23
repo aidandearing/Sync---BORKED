@@ -18,19 +18,33 @@ public class RawImageColourSequencer : MonoBehaviour
     private int step;
     private Color start;
     private Color end;
-    public Synchronism.Synchronisations synchronisation = Synchronism.Synchronisations.WHOLE_NOTE;
 
-    // Use this for initialization
-    void Start()
+    public Synchronism.Synchronisations synchronisation = Synchronism.Synchronisations.WHOLE_NOTE;
+    private Synchroniser synchroniser;
+
+    private bool isInitialised = false;
+
+    void Initialise()
     {
-        ((Synchronism)Blackboard.Global["Synchroniser"].Value).synchronisers[synchronisation].RegisterCallback(this, Callback);
-        Callback();
+        if (!isInitialised)
+        {
+            if (((Synchronism)Blackboard.Global["Synchroniser"].Value) != null)
+            {
+                synchroniser = ((Synchronism)Blackboard.Global["Synchroniser"].Value).synchronisers[synchronisation];
+                synchroniser.RegisterCallback(this, Callback);
+                Callback();
+                isInitialised = true;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        image.color = Color.Lerp(start, end, ((Synchronism)Blackboard.Global["Synchroniser"].Value).synchronisers[synchronisation].Percent);
+        if (!isInitialised)
+            Initialise();
+
+        image.color = Color.Lerp(start, end, synchroniser.Percent);
     }
 
     void Callback()

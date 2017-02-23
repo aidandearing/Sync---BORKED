@@ -8,23 +8,29 @@ public class Synchronism : MonoBehaviour
     public Dictionary<Synchronisations, Synchroniser> synchronisers = new Dictionary<Synchronisations, Synchroniser>();
 
     /// <summary>
-    /// This establishes the 'heart rate' of the note waves, this should be set to the BPM of the current music playing
+    /// The Beats Per Minute of the song
     /// </summary>
     public float BPM = 120;
-    public float TimeSignature = 4 / 4;
+    public float Beats = 4;
+    public float Bar = 4;
 
     protected virtual void Initialise()
     {
-        synchronisers.Add(Synchronisations.BAR_8, new Synchroniser(60 / (BPM / TimeSignature) * 8));
-        synchronisers.Add(Synchronisations.BAR_4, new Synchroniser(60 / (BPM / TimeSignature) * 4));
-        synchronisers.Add(Synchronisations.BAR_2, new Synchroniser(60 / (BPM / TimeSignature) * 2));
-        synchronisers.Add(Synchronisations.BAR, new Synchroniser(60 / (BPM / TimeSignature)));
-        synchronisers.Add(Synchronisations.WHOLE_NOTE, new Synchroniser(60 / BPM));
-        synchronisers.Add(Synchronisations.HALF_NOTE, new Synchroniser(60 / BPM * 0.5));
-        synchronisers.Add(Synchronisations.QUARTER_NOTE, new Synchroniser(60 / BPM * 0.25));
-        synchronisers.Add(Synchronisations.EIGHTH_NOTE, new Synchroniser(60 / BPM * 0.125));
-        synchronisers.Add(Synchronisations.SIXTEENTH_NOTE, new Synchroniser(60 / BPM * 0.0625));
-        synchronisers.Add(Synchronisations.THIRTYSECOND_NOTE, new Synchroniser(60 / BPM * 0.03125));
+        double beatPerBar = Beats;
+        double beat = 60 / BPM;
+
+        // Technically if the Bar is at 4, that means a quarter note is a beat
+        // But for now I am going to make this all 4/4 and ignore this math
+        synchronisers.Add(Synchronisations.BAR_8, new Synchroniser(beatPerBar * beat * 8));
+        synchronisers.Add(Synchronisations.BAR_4, new Synchroniser(beatPerBar * beat * 4));
+        synchronisers.Add(Synchronisations.BAR_2, new Synchroniser(beatPerBar * beat * 2));
+        synchronisers.Add(Synchronisations.BAR, new Synchroniser(beatPerBar * beat));
+        synchronisers.Add(Synchronisations.WHOLE_NOTE, new Synchroniser(beat * 4));
+        synchronisers.Add(Synchronisations.HALF_NOTE, new Synchroniser(beat * 2));
+        synchronisers.Add(Synchronisations.QUARTER_NOTE, new Synchroniser(beat));
+        synchronisers.Add(Synchronisations.EIGHTH_NOTE, new Synchroniser(beat * 0.5));
+        synchronisers.Add(Synchronisations.SIXTEENTH_NOTE, new Synchroniser(beat * 0.25));
+        synchronisers.Add(Synchronisations.THIRTYSECOND_NOTE, new Synchroniser(beat * 0.125));
 
         Blackboard.Global.Add("Synchroniser", new BlackboardValue() { Value = this });
     }

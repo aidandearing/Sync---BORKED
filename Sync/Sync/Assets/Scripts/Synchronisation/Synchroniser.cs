@@ -10,6 +10,13 @@ public class Synchroniser
 
     private double timer;
     private double goal;
+    public double Duration
+    {
+        get
+        {
+            return goal;
+        }
+    }
 
     public float Percent
     {
