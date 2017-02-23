@@ -34,9 +34,8 @@ public class MusicTrack
 
                 synchroniser = ((Synchronism)Blackboard.Global["Synchroniser"].Value).synchronisers[synchronisation];
                 synchroniser.RegisterCallback(this, Callback);
-
-                float d = (durationCurrent + synchroniser.Percent) / duration;
-                float v = volume.Evaluate(d);
+                
+                float v = volume.Evaluate(evaluate);
 
                 foreach (MusicSource source in sources)
                 {
@@ -55,9 +54,8 @@ public class MusicTrack
     {
         if (!isInitialised)
             Initialise();
-
-        float d = (durationCurrent + synchroniser.Percent) / duration;
-        float v = volume.Evaluate(d);
+        
+        float v = volume.Evaluate(evaluate);
 
         foreach (MusicSource source in sources)
         {

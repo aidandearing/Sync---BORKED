@@ -12,7 +12,7 @@ public class RawImageColourSequencer : MonoBehaviour
     public Format format = Format.Loop;
     public enum Animation { Lerp, FadeTo, FadeFrom };
     public Animation animation = Animation.FadeTo;
-    public Color fade = Color.black;
+    public Gradient fade;
     [Range(1, 360)]
     public int steps = 16;
     private int step;
@@ -91,10 +91,10 @@ public class RawImageColourSequencer : MonoBehaviour
                 break;
             case Animation.FadeTo:
                 start = end;
-                end = fade;
+                end = fade.Evaluate(evaluate);
                 break;
             case Animation.FadeFrom:
-                start = fade;
+                start = fade.Evaluate(evaluate);
                 break;
         }
     }
