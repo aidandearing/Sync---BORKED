@@ -28,7 +28,7 @@ public class PlayerController : Controller
         /// </summary>
         Thrust,
         /// <summary>
-        /// This character will perform jumps capable of jumping off walls as well
+        /// This character will perform jumps off jumping off walls as well
         /// </summary>
         WallJump
     };
@@ -67,7 +67,7 @@ public class PlayerController : Controller
 
     }
 
-    // Fixed Update is called once per frame
+    // Fixed Update is called once per physics step
     override protected void FixedUpdate()
     {
 
