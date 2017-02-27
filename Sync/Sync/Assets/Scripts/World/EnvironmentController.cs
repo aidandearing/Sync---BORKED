@@ -11,7 +11,9 @@ public class EnvironmentController : MonoBehaviour
     [Header("Environmental")]
     public Gradient sunlight;
     public Gradient fog;
+    [Range(0.0000001f, 1.0f)]
     public float fogDensityDay = 0.0005f;
+    [Range(0.0000001f, 1.0f)]
     public float fogDensityNight = 0.001f;
     [Header("Euler Rotations")]
     public Vector3 day;

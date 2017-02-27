@@ -17,10 +17,12 @@ public class ColourTransition
     public void SetColour()
     {
         float temp = Random.Range(Mathf.Clamp(colourGoal - 0.2f, 0, 1), Mathf.Clamp(colourGoal + 0.2f, 0, 1));
+
         while (colourGoal == temp)
         {
             temp = Random.Range(Mathf.Clamp(colourGoal - 0.2f, 0, 1), Mathf.Clamp(colourGoal + 0.2f, 0, 1));
         }
+
         colourStart = colourGoal;
         colourGoal = temp;
     }
