@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Characters/Musicians/Harmony/Contra/Splash/splashContra.unity
+- path: Assets/Characters/Nero/nero_splash.unity
   isLoaded: 1
   isActive: 1
