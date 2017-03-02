@@ -6,22 +6,49 @@ using UnityEngine;
 
 public class NeroGraffitiControl : MonoBehaviour
 {
+    [Header("Sequencer")]
+    public SequencerGradient sequencer;
+
     [Header("References")]
     public Transform location;
-    new public SphereCollider collider;
 
     [Header("Distance")]
     public float nearDistance = 5.0f;
     public float farDistance = 25.0f;
 
-    void Start()
+    void Update()
     {
-        collider.radius = farDistance;
+        if (!sequencer.isInitialised)
+        {
+            sequencer.Initialise();
+            sequencer.callback = Callback;
+        }
     }
 
     public float Evaluate(Transform other)
     {
         float distance = Mathf.Clamp((other.position - location.position).magnitude, nearDistance, farDistance) / (farDistance - nearDistance);
         return Mathf.Lerp(0, 1, 1 - distance); 
+    }
+
+    void Callback()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+
+        RaycastHit[] hits = Physics.SphereCastAll(ray, farDistance, farDistance);//, Literals.IntLiterals.Physics.Layers.graffiti);
+
+        foreach(RaycastHit hit in hits)
+        {
+            if (hit.collider.gameObject.tag == Literals.StringLiterals.Tags.NeroGraffiti)
+            {
+                NeroGraffitiBehaviour graffiti = hit.collider.gameObject.GetComponent<NeroGraffitiBehaviour>();
+                graffiti.SetController(this);
+            }
+        }
+
+        //if (DEBUG == true)
+        {
+            Debug.Log("NeroGraffitiController.Callback() has been called");
+        }
     }
 }

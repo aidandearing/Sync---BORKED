@@ -46,22 +46,8 @@ public class NeroGraffitiBehaviour : MonoBehaviour
         renderer.material.SetColor("_EmissionColor", graffitiEmission.Evaluate(distance));
     }
 
-    void OnTriggerEnter(Collider other)
+    public void SetController(NeroGraffitiControl controller)
     {
-        Debug.Log(other.name);
-
-        if (other.tag == StringLiterals.Tags.NeroGraffitiController)
-        {
-            NeroGraffitiControl nero = other.gameObject.GetComponentInChildren<NeroGraffitiControl>();
-            controller = nero;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == StringLiterals.Tags.NeroGraffitiController)
-        {
-            controller = null;
-        }
+        this.controller = controller;
     }
 }
