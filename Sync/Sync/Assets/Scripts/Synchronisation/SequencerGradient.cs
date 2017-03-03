@@ -79,35 +79,34 @@ public class SequencerGradient
         if (delayCurrent < delay)
         {
             delayCurrent++;
+            return;
         }
-        else
+
+        durationCurrent++;
+
+        switch (format)
         {
-            durationCurrent++;
-
-            switch (format)
-            {
-                case Format.Linear:
-                    durationCurrent = Math.Min(durationCurrent, duration);
-                    break;
-                case Format.Loop:
-                    if (durationCurrent >= duration)
-                    {
-                        durationCurrent -= duration;
-                    }
-                    break;
-                case Format.PingPong:
-                    if (durationCurrent >= duration * 2)
-                    {
-                        durationCurrent -= duration * 2;
-                    }
-                    break;
-                case Format.Random:
-                    durationCurrent = UnityEngine.Random.Range(0, duration);
-                    break;
-            }
-
-            if (callback != null)
-                callback.Invoke();
+            case Format.Linear:
+                durationCurrent = Math.Min(durationCurrent, duration);
+                break;
+            case Format.Loop:
+                if (durationCurrent >= duration)
+                {
+                    durationCurrent -= duration;
+                }
+                break;
+            case Format.PingPong:
+                if (durationCurrent >= duration * 2)
+                {
+                    durationCurrent -= duration * 2;
+                }
+                break;
+            case Format.Random:
+                durationCurrent = UnityEngine.Random.Range(0, duration);
+                break;
         }
+
+        if (callback != null)
+            callback.Invoke();
     }
 }
