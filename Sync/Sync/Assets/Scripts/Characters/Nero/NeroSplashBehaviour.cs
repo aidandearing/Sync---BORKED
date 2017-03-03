@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Characters/Nero/NeroSplashBehavior")]
 class NeroSplashBehaviour : MonoBehaviour
 {
     [Header("References")]

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Characters/Nero/NeroGraffitiBehaviour")]
 public class NeroGraffitiBehaviour : MonoBehaviour
 {
     [Header("References")]
