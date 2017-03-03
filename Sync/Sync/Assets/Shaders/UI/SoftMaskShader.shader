@@ -17,7 +17,7 @@
 		_Max("Max", Vector) = (1,1,0,0)
 		_AlphaMask("Alpha Mask - Must be wrapped", 2D) = "white" {}
 		_AlphaUV("Alpha UV", Vector) = (1,1,0,0)
-		_AlphaRangeMode("Alpha Range Mode", Float) = 0
+		_AlphaRangeMode("Alpha Range Mode", Int) = 0
 		_AlphaRange("Alpha Range", Float) = 1
 		_AlphaCurve("Alpha Curve", Float) = 1
 		_CutOff("Cutoff", Float) = 0
@@ -142,10 +142,12 @@
 					clip(color.a - 0.001f);
 
 				if (_AlphaRangeMode == 1)
-					color.a = (int)(color.a * (255 * _AlphaRange)) / _AlphaRange;
+					color.a = (int)(color.a * (255 * _AlphaRange));
 				else if (_AlphaRangeMode == 2)
-					color.a = floor(color.a * _AlphaRange) / _AlphaRange;
+					color.a = (int)(color.a * (255 * _AlphaRange)) / (255 * _AlphaRange);
 				else if (_AlphaRangeMode == 3)
+					color.a = floor(color.a * _AlphaRange) / _AlphaRange;
+				else if (_AlphaRangeMode == 4)
 					color.a = floor(pow(color.a, _AlphaCurve) * _AlphaRange) / _AlphaRange;
 
 				return color;
