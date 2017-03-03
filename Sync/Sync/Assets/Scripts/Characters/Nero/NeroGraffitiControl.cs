@@ -16,6 +16,10 @@ public class NeroGraffitiControl : MonoBehaviour
     public float nearDistance = 5.0f;
     public float farDistance = 25.0f;
 
+    [Header("Velocity")]
+    [Tooltip("This controls the speed graffiti growth is limited to.")]
+    public float velocityLimit = 0.01f;
+
     void Update()
     {
         if (!sequencer.isInitialised)
@@ -44,11 +48,6 @@ public class NeroGraffitiControl : MonoBehaviour
                 NeroGraffitiBehaviour graffiti = hit.collider.gameObject.GetComponent<NeroGraffitiBehaviour>();
                 graffiti.SetController(this);
             }
-        }
-
-        //if (DEBUG == true)
-        {
-            Debug.Log("NeroGraffitiController.Callback() has been called");
         }
     }
 }

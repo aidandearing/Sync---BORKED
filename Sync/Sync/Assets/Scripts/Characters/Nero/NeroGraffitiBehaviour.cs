@@ -26,6 +26,8 @@ public class NeroGraffitiBehaviour : MonoBehaviour
 
     private NeroGraffitiControl controller;
 
+    private float distanceVelocity = 0;
+
     void Start()
     {
         renderer.material = Instantiate(graffiti);
@@ -39,7 +41,7 @@ public class NeroGraffitiBehaviour : MonoBehaviour
         //    return;
         //}
 
-        distance = (controller != null) ? controller.Evaluate(gameObject.transform) : 0.0f;
+        distance = Mathf.SmoothDamp(distance, (controller != null) ? controller.Evaluate(gameObject.transform) : 0.0f, ref distanceVelocity, (controller != null) ? controller.velocityLimit : 1f);
 
         renderer.material.SetColor("_Color", graffitiColour.Evaluate(distance));
         renderer.material.SetFloat("_Cutoff", graffitiCutout.Evaluate(distance));
