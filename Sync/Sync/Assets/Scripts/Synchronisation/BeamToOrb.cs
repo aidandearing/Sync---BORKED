@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Scripts/Synchronisation/BeamToOrb")]
 public class BeamToOrb : MonoBehaviour
 {
     public Synchronism.Synchronisations ListenTo = Synchronism.Synchronisations.WHOLE_NOTE;

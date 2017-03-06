@@ -1,15 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(RawImage))]
-public class RawImageColourSequencer : MonoBehaviour
+[RequireComponent(typeof(Text))]
+[AddComponentMenu("Scripts/UI/TextColourSequencer")]
+public class TextColourSequencer : MonoBehaviour
 {
     [Header("Sequencer")]
     public SequencerGradient sequencer;
     [Header("References")]
-    public RawImage image;
+    public Text text;
     [Header("Animation")]
     public Gradient gradient;
     public enum Animation { Lerp, FadeTo, FadeFrom };
@@ -40,7 +46,7 @@ public class RawImageColourSequencer : MonoBehaviour
         if (!isInitialised)
             Initialise();
 
-        image.color = Color.Lerp(start, end, sequencer.Evaluate());
+        text.color = Color.Lerp(start, end, sequencer.Evaluate());
     }
 
     void Callback()
@@ -64,3 +70,4 @@ public class RawImageColourSequencer : MonoBehaviour
         }
     }
 }
+
