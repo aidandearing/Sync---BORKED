@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-[AddComponentMenu("Scripts/Synchronisation/TitleSynchronism")]
+[AddComponentMenu("Scripts/Synchronisation/Title Synchronism")]
 public class TitleSynchronism : Synchronism
 {
     public MusicPlayer musicPlayer;

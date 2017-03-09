@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Scripts/Synchronisation/NeutralEmissives")]
+[AddComponentMenu("Scripts/Synchronisation/Neutral Emissives")]
 public class NeutralEmissives : MonoBehaviour
 {
     public Synchronism.Synchronisations ListenTo = Synchronism.Synchronisations.WHOLE_NOTE;

@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 
 [Serializable]
-[AddComponentMenu("Scripts/Synchronisation/EdgeDetectionSequencer")]
+[AddComponentMenu("Scripts/Synchronisation/Edge Detection Sequencer")]
 public class EdgeDetectionSequencer
 {
     [Header("References")]

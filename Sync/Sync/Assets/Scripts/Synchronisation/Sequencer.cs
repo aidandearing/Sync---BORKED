@@ -19,7 +19,7 @@ public class Sequencer<T>
 }
 
 [System.Serializable]
-[AddComponentMenu("Scripts/Synchronisation/SequencerGameObjects")]
+[AddComponentMenu("Scripts/Synchronisation/Sequencer")]
 public class SequencerGameObjects
 {
     Sequencer<GameObject> sequencer;

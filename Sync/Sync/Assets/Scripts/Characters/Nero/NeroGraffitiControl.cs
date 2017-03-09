@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Characters/Nero/NeroGraffitiControl")]
 public class NeroGraffitiControl : MonoBehaviour
 {
     [Header("Sequencer")]

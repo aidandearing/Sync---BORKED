@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(RawImage))]
-[AddComponentMenu("Scripts/UI/RawImageColourSequencer")]
+[AddComponentMenu("Scripts/UI/Raw Image Colour Sequencer")]
 public class RawImageColourSequencer : MonoBehaviour
 {
     [Header("Sequencer")]

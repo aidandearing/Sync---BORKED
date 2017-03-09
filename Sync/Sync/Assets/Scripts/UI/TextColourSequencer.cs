@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-[AddComponentMenu("Scripts/UI/TextColourSequencer")]
+[AddComponentMenu("Scripts/UI/Text Colour Sequencer")]
 public class TextColourSequencer : MonoBehaviour
 {
     [Header("Sequencer")]

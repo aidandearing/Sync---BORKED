@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-[AddComponentMenu("Scripts/UI/RawImageRectSequencer")]
+[AddComponentMenu("Scripts/UI/Raw Image Rectangular Sequencer")]
 public class RawImageRectSequencer : MonoBehaviour
 {
     [Header("Sequencer")]

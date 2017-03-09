@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Scripts/Utility/Standard Material Transition")]
 public class StandardMaterialTransition : MonoBehaviour
 {
     private Renderer render;

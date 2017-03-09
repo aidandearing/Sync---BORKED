@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [ExecuteInEditMode]
-[AddComponentMenu("Scripts/UI/SoftMask")]
+[AddComponentMenu("Scripts/UI/Soft Mask")]
 public class SoftMask : MonoBehaviour
 {
     public Material material;

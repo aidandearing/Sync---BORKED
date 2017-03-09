@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 
 [System.Serializable]
-[AddComponentMenu("Scripts/Synchronisation/SequencerGradient")]
+[AddComponentMenu("Scripts/Synchronisation/Sequencer Gradient")]
 public class SequencerGradient
 {
     public delegate void OnCallback();

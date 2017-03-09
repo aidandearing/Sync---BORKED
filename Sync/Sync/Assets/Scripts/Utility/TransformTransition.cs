@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Scripts/Utility/Transform Transition")]
 public class TransformTransition : MonoBehaviour
 {
     [SerializeField]

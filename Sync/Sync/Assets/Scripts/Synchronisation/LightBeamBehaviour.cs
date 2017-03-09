@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Scripts/Synchronisation/LightBeamBehaviour")]
+[AddComponentMenu("Scripts/Synchronisation/Light Beam Behaviour")]
 public class LightBeamBehaviour : MonoBehaviour
 {
     public float velocity = 100;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Scripts/Synchronisation/FlareBehaviour")]
+[AddComponentMenu("Scripts/Synchronisation/Flare Behaviour")]
 public class FlareBehaviour : MonoBehaviour
 {
     public float Velocity = 2000;

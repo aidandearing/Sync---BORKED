@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Scripts/Utility/Smooth Follow and Look")]
 public class SmoothFollowAndLook : MonoBehaviour
 {
     [SerializeField]

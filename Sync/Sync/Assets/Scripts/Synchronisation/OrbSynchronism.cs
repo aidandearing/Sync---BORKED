@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-[AddComponentMenu("Scripts/Synchronisation/OrbSynchronism")]
+[AddComponentMenu("Scripts/Synchronisation/Orb Synchronism")]
 public class OrbSynchronism : Synchronism
 {
     public AudioSource Metronome;
