@@ -20,21 +20,38 @@ public class PlayerController : Controller
         /// </summary>
         Glide,
         /// <summary>
-        /// This character will hover stationary
+        /// This character will perform a jump and then transition into a glide
+        /// </summary>
+        JumpGlide,
+        /// <summary>
+        /// This character will hover
         /// </summary>
         Hover,
+        /// <summary>
+        /// This character will perform a jump and then transition into a hover
+        /// </summary>
+        JumpHover,
         /// <summary>
         /// This character will thrust themselves into the air
         /// </summary>
         Thrust,
         /// <summary>
-        /// This character will perform jumps off jumping off walls as well
+        /// This character will jump and then thrust themselves into the air
+        /// </summary>
+        JumpThrust,
+        /// <summary>
+        /// This character will count walls as valid to jump off of, as well as the ground
         /// </summary>
         WallJump
     };
 
     [Header("References")]
     new public Rigidbody rigidbody;
+    public Animator animator;
+
+    [Header("Statistics")]
+
+
     [Header("Movement")]
     [Range(0, 15)]
     [Tooltip("The speed in m/s that this character will move forward")]
@@ -44,16 +61,35 @@ public class PlayerController : Controller
     [Range(0, 7)]
     [Tooltip("The speed in m/s that this character will move backwards")]
     public float speedBackward;
+    [Range(0, 15)]
+    [Tooltip("The speed in m/s that this character will move sideways")]
+    public float speedSidestep;
+    [Tooltip("The format for this characters movement")]
+    public MovementAction movementAction = MovementAction.Jump;
     [Tooltip("Establishes at what timing this character is allowed to perform their movement action, whether it be jumping, teleporting, or whatever it may be")]
     public Synchronism.Synchronisations movementSync = Synchronism.Synchronisations.HALF_NOTE;
+    // TELEPORT
+    [Range(-25,25)]
+    public float movementTeleportDistance = 2.5f;
+    public bool movementTeleportThroughWalls = false;
+    public bool movementTeleportToTarget = true;
+    public Vector3 movementTeleportTarget = Vector3.zero;
+    // GLIDE
+    [Range(0,10)]
+    public float movementGlideDownToForward = 0.9f;
+    // THRUST
+    public float movementThrustSpeed = 10.0f;
+    public SequencerGradient movementThrustSequencer;
+    public AnimationCurve movementThrustCurve = new AnimationCurve();
+    // JUMP and HOVER
+    [Range(0, 10)]
+    public float movementHeight = 2;
+    public bool movementVectoring = false;
+    // GENERAL
     [Range(-1, 100)]
     [Tooltip("The number of times this character is able to perform their movement action, -1 for infinite actions")]
     public float movementCount = 1;
-    [Range(0,25)]
-    [Tooltip("The distances this character will travel when they perform their movement action")]
-    public float distance = 3;
-    [Tooltip("The format for this characters movement")]
-    public MovementAction movementAction = MovementAction.Jump;
+    public bool movementInheritVelocity = true;
 
     // Use this for initialization
     override protected void Start()
@@ -64,12 +100,12 @@ public class PlayerController : Controller
     // Update is called once per frame
     override protected void Update()
     {
-
+        
     }
 
     // Fixed Update is called once per physics step
     override protected void FixedUpdate()
     {
-
+        animator.SetFloat("moveSpeed", rigidbody.velocity.magnitude);
     }
 }

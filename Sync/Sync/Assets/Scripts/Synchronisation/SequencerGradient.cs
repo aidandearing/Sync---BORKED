@@ -12,20 +12,26 @@ public class SequencerGradient
 
     public enum Format { Linear, Loop, PingPong, Random };
     [Header("Format")]
+    [SerializeField]
     public Format format = Format.Linear;
 
     [Header("Timing")]
+    [SerializeField]
     public int delay = 0;
     private int delayCurrent = 0;
+    [SerializeField]
     public int duration = 4;
     private int durationCurrent = 0;
     private float evaluate = 0;
 
     [Header("Synchroniser")]
+    [SerializeField]
     public Synchronism.Synchronisations synchronisation = Synchronism.Synchronisations.BAR_8;
+    [SerializeField]
     public Synchroniser synchroniser;
 
-    public OnCallback callback;
+    [SerializeField]
+    public OnCallback callback = null;
 
     [NonSerialized]
     public bool isInitialised = false;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 [AddComponentMenu("Scripts/Utility/Smooth Follow and Look")]
 public class SmoothFollowAndLook : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class SmoothFollowAndLook : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float percent = (float)currentStep / (float)maxSteps;
 
