@@ -49,7 +49,6 @@ public class PlayerController : Controller
     new public Rigidbody rigidbody;
     public Animator animator;
 
-    [Header("Statistics")]
 
 
     [Header("Movement")]
@@ -68,6 +67,7 @@ public class PlayerController : Controller
     public MovementAction movementAction = MovementAction.Jump;
     [Tooltip("Establishes at what timing this character is allowed to perform their movement action, whether it be jumping, teleporting, or whatever it may be")]
     public Synchronism.Synchronisations movementSync = Synchronism.Synchronisations.HALF_NOTE;
+    public Synchroniser synchroniser;
     // TELEPORT
     [Range(-25,25)]
     public float movementTeleportDistance = 2.5f;
@@ -106,6 +106,30 @@ public class PlayerController : Controller
     // Fixed Update is called once per physics step
     override protected void FixedUpdate()
     {
+        HandleInput();
+
         animator.SetFloat("moveSpeed", rigidbody.velocity.magnitude);
+    }
+
+    void HandleInput()
+    {
+        // Make a vector that has its left right axis set to the desired horizontal movement, its vertical axis set to 1 or 0 desired jump state, and its forward axis set to the desired forward movement
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Jump"), Input.GetAxis("Vertical"));
+
+        rigidbody.AddForce(movement, ForceMode.Impulse);
+
+        if (movement.sqrMagnitude > 0)
+            rigidbody.MoveRotation(Quaternion.Euler(0, Mathf.Rad2Deg * Mathf.Atan2(movement.x, movement.z), 0));
+
+        // Shooter Mode
+        if (canWalkBackward)
+        {
+
+        }
+        // 360 Action Mode
+        else
+        {
+
+        }
     }
 }
