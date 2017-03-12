@@ -33,5 +33,10 @@ public static class Literals
             public static string NeroGraffitiController = "nero";
             public static string NeroGraffiti = "nero graffiti";
         }
+
+        public static class Blackboard
+        {
+            public static string Synchroniser = "synchroniser";
+        }
     }
 }
